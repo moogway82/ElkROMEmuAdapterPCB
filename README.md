@@ -58,4 +58,8 @@ Quick Start Guide
 
 9. Should see 160K RAM at top of the screen and Shift + Break should load up the gamez: Enjoy!
 
-** I had a fake STM32 chip on my AliExpress STM32 F4VE board, was actually a Geehy chip. And it wouldn't let me program it using the ST-Link v2. But I could programm it using DFU mode and USB cable, I just had to change the PID and VID to the ones my chip used. I found that in linux using the lsusb command, Windows users might be able to use Device Manager or something. 
+** I had a fake STM32 chip on my AliExpress STM32 F4VE board, was actually a Geehy chip. And it wouldn't let me program it using the ST-Link v2. But I could programm it using DFU mode and USB cable, I just had to change the PID and VID to the ones my chip used. I found that in linux using the lsusb command, Windows users might be able to use Device Manager or something. Also, don't forget in Ubuntu Linux to allow user to be able to access the USB device, like creating a `/etc/udev/rules.d/90-stm32dfu.rules` file with the following contents:
+```
+SUBSYSTEM=="usb", ATTR{idVendor}=="314b", ATTR{idProduct}=="0106", MODE="0660", GROUP="plugdev"
+```
+
